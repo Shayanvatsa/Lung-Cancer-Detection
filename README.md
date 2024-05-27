@@ -58,7 +58,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import cv2
 
-# Define the ImageDataGenerator for data augmentation
+## Define the ImageDataGenerator for data augmentation
 datagen = ImageDataGenerator(
     rotation_range=15,
     width_shift_range=0.1,
@@ -69,19 +69,19 @@ datagen = ImageDataGenerator(
     fill_mode='nearest'
 )
 
-# Load the dataset
-# (Ensure you have your dataset in an appropriate format)
+## Load the dataset
+### Ensure you have your dataset in an appropriate format
 x_train, y_train = load_data('data/train')
 x_val, y_val = load_data('data/val')
 x_test, y_test = load_data('data/test')
 
-# Fit the ImageDataGenerator on your training data
+## Fit the ImageDataGenerator on your training data
 datagen.fit(x_train)
 
-# Define the number of augmented images to generate per original image
+## Define the number of augmented images to generate per original image
 augmented_images_per_original = 6
 
-# Generate augmented images and append them to the training data
+## Generate augmented images and append them to the training data
 augmented_x_train = []
 augmented_y_train = []
 for i in range(len(x_train)):
@@ -90,11 +90,11 @@ for i in range(len(x_train)):
         augmented_x_train.append(augmented_image)
         augmented_y_train.append(y_train[i])
 
-# Convert lists to numpy arrays
+## Convert lists to numpy arrays
 augmented_x_train = np.array(augmented_x_train)
 augmented_y_train = np.array(augmented_y_train)
 
-# Concatenate original and augmented training data
+## Concatenate original and augmented training data
 x_train_augmented = np.concatenate((x_train, augmented_x_train), axis=0)
 y_train_augmented = np.concatenate((y_train, augmented_y_train), axis=0)
 
@@ -207,5 +207,5 @@ plt.show()
     
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/licenses/MIT) file for details.
 
